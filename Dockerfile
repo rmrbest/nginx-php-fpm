@@ -76,9 +76,15 @@ RUN chmod 755 /start.sh
 # Setup Volume
 VOLUME ["/usr/share/nginx/html"]
 
-# add test PHP file
-ADD ./index.php /usr/share/nginx/html/index.php
-RUN chown -Rf www-data.www-data /usr/share/nginx/html/
+
+RUN mkdir -p /deploy/releases/fake_release
+RUN ln -s /deploy/releases/fake_release /deploy/current
+RUN rm -rf /var/www
+RUN ln -s /deploy/current /var/www
+
+RUN chown -Rf www-data.www-data /var/www
+
+VOLUME /deploy
 
 # Expose Ports
 EXPOSE 443
