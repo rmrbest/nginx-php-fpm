@@ -27,11 +27,14 @@ RUN apt-get update && \
     echo -n > /var/lib/apt/extended_states && \
     rm -rf /var/lib/apt/lists/* && \
     rm -rf /usr/share/man/?? && \
-    rm -rf /usr/share/man/??_* && \
-    mkdir /tmp/phalcon && \
+    rm -rf /usr/share/man/??_* 
+   
+   
+# Phalcon 2.0.10 
+RUN mkdir /tmp/phalcon && \
     cd /tmp/phalcon && \
-    git clone --branch phalcon-v2.0.10 https://github.com/phalcon/cphalcon.git && \
-    cd build; ./install
+    git clone --branch 'phalcon-v2.0.10' https://github.com/phalcon/cphalcon.git && \
+    cd build; ./install    
     
 # tweak nginx config
 RUN sed -i -e"s/worker_processes  1/worker_processes 5/" /etc/nginx/nginx.conf && \
