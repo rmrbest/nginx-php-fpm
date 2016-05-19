@@ -33,7 +33,7 @@ RUN apt-get update && \
 # Phalcon 2.0.10 
 RUN mkdir /tmp/phalcon && \
     cd /tmp/phalcon && \
-    git clone https://github.com/phalcon/cphalcon.git && \
+    git clone https://github.com/phalcon/cphalcon.git . && \
     git checkout phalcon-v2.0.10 && \
     cd build; ./install    
     
