@@ -18,7 +18,7 @@ RUN apt-get update && \
     add-apt-repository ppa:nginx/$nginx && \
     apt-get update && \
     apt-get upgrade -y && \
-    BUILD_PACKAGES="supervisor cron build-essential nginx php5-dev php5-fpm git php5-mysql php-apc php5-curl php5-gd php5-intl php5-mcrypt php5-memcache php5-sqlite php5-tidy php5-xmlrpc php5-xsl php5-pgsql php5-mongo pwgen git php5-redis php5-cli php5-xdebug " && \
+    BUILD_PACKAGES="supervisor cron nginx php5-fpm git php5-mysql php-apc php5-curl php5-gd php5-intl php5-mcrypt php5-memcache php5-sqlite php5-tidy php5-xmlrpc php5-xsl php5-pgsql php5-mongo pwgen php5-phalcon php5-redis php5-cli php5-xdebug " && \
     apt-get -y install $BUILD_PACKAGES && \
     apt-get remove --purge -y software-properties-common && \
     apt-get autoremove -y && \
@@ -27,16 +27,8 @@ RUN apt-get update && \
     echo -n > /var/lib/apt/extended_states && \
     rm -rf /var/lib/apt/lists/* && \
     rm -rf /usr/share/man/?? && \
-    rm -rf /usr/share/man/??_* 
-   
-   
-# Phalcon 2.0.10 
-# RUN mkdir /tmp/phalcon && \
-#     cd /tmp/phalcon && \
-#     git clone https://github.com/phalcon/cphalcon.git . && \
-#     git checkout phalcon-v2.0.10 && \
-#     cd build; ./install    
-    
+    rm -rf /usr/share/man/??_*
+
 # tweak nginx config
 RUN sed -i -e"s/worker_processes  1/worker_processes 5/" /etc/nginx/nginx.conf && \
 sed -i -e"s/keepalive_timeout\s*65/keepalive_timeout 2/" /etc/nginx/nginx.conf && \
