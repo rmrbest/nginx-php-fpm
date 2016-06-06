@@ -18,7 +18,7 @@ RUN apt-get update && \
     add-apt-repository ppa:nginx/$nginx && \
     apt-get update && \
     apt-get upgrade -y && \
-    BUILD_PACKAGES="supervisor cron nginx php5-fpm git php5-mysql php-apc php5-curl php5-gd php5-intl php5-mcrypt php5-memcache php5-sqlite php5-tidy php5-xmlrpc php5-xsl php5-pgsql php5-mongo pwgen php5-phalcon php5-redis php5-cli php5-xdebug " && \
+    BUILD_PACKAGES="supervisor wget cron nginx php5-fpm git php5-mysql php-apc php5-curl php5-gd php5-intl php5-mcrypt php5-memcache php5-sqlite php5-tidy php5-xmlrpc php5-xsl php5-pgsql php5-mongo pwgen php5-phalcon php5-redis php5-cli php5-xdebug " && \
     apt-get -y install $BUILD_PACKAGES && \
     apt-get remove --purge -y software-properties-common && \
     apt-get autoremove -y && \
