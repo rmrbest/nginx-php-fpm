@@ -35,7 +35,9 @@ RUN mkdir /tmp/phalcon && \
     cd /tmp/phalcon && \
     git clone https://github.com/phalcon/cphalcon.git . && \
     git checkout phalcon-v2.0.10 && \
-    cd build; ./install    
+    cd build; ./install && \
+    echo "extension=phalcon.so" > /etc/php5/mods-available/30-phalcon.ini && \
+    php5enmod 30-phalcon
     
 # tweak nginx config
 RUN sed -i -e"s/worker_processes  1/worker_processes 5/" /etc/nginx/nginx.conf && \
